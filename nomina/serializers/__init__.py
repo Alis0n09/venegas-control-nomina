@@ -1,0 +1,4 @@
+from .empleado import EmpleadoSerializer, EmpleadoSummarySerializer
+from .nomina import NominaSerializer, NominaSummarySerializer
+from .detalle_nomina import DetalleNominaSerializer, DetalleNominaSummarySerializer
+from .descuentos import DescuentoSerializer
