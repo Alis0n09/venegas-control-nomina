@@ -6,8 +6,7 @@ Sistema de gestion de nomina desarrollado con Django REST Framework. Calcula aut
 
 ## Despliegue
 
-Producción | https://venegas-nominas.uaeftt-ute.site
-IP directa | http://20.150.222.163 
+Produccion | https://venegas-nominas.uaeftt-ute.site
 Admin Django | https://venegas-nominas.uaeftt-ute.site/admin/
 ---
 
@@ -191,6 +190,7 @@ PATCH | `/api/usuarios/profile/` | Editar mi perfil
 POST | `/api/usuarios/change-password/` | Cambiar mi contraseña 
 POST | `/api/usuarios/{id}/toggle-active/` | Activar/desactivar usuario
 GET | `/api/usuarios/stats/` | Estadísticas de usuarios 
+
 ---
 
 ## Ejemplos de uso con token
