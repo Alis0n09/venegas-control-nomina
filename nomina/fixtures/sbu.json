@@ -1,0 +1,56 @@
+[
+  {
+    "model": "nomina.sbu",
+    "pk": 1,
+    "fields": {
+      "anio": 2020,
+      "valor": "400.00",
+      "fecha_vigencia": "2020-01-01"
+    }
+  },
+  {
+    "model": "nomina.sbu",
+    "pk": 2,
+    "fields": {
+      "anio": 2021,
+      "valor": "400.00",
+      "fecha_vigencia": "2021-01-01"
+    }
+  },
+  {
+    "model": "nomina.sbu",
+    "pk": 3,
+    "fields": {
+      "anio": 2022,
+      "valor": "425.00",
+      "fecha_vigencia": "2022-01-01"
+    }
+  },
+  {
+    "model": "nomina.sbu",
+    "pk": 4,
+    "fields": {
+      "anio": 2023,
+      "valor": "450.00",
+      "fecha_vigencia": "2023-01-01"
+    }
+  },
+  {
+    "model": "nomina.sbu",
+    "pk": 5,
+    "fields": {
+      "anio": 2024,
+      "valor": "460.00",
+      "fecha_vigencia": "2024-01-01"
+    }
+  },
+  {
+    "model": "nomina.sbu",
+    "pk": 6,
+    "fields": {
+      "anio": 2025,
+      "valor": "480.00",
+      "fecha_vigencia": "2025-01-01"
+    }
+  }
+]

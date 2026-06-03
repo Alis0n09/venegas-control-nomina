@@ -96,6 +96,12 @@ jobs:
             echo "── 3. Aplicando migraciones ──"
             uv run python manage.py migrate --noinput
 
+            echo "── 3.5 Cargando datos iniciales ──"
+            uv run python manage.py loaddata nomina/fixtures/sbu.json
+            uv run python manage.py loaddata nomina/fixtures/impuesto_renta_2024.json
+            uv run python manage.py loaddata nomina/fixtures/impuesto_renta_2025.json
+            uv run python manage.py loaddata nomina/fixtures/impuesto_renta_2026.json
+
             echo "── 4. Recolectando estáticos ──"
             uv run python manage.py collectstatic --noinput --clear
 
