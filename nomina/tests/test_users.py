@@ -1,7 +1,7 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
 from rest_framework import status
-from .helpers import create_user, create_staff, auth_client
+from nomina.tests.helpers import create_user, create_staff, auth_client
 
 
 class ProfileTests(TestCase):

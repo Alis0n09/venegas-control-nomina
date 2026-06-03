@@ -2,7 +2,7 @@ from datetime import date
 from django.test import TestCase
 from rest_framework.test import APIClient
 from rest_framework import status
-from .helpers import create_user, create_staff, auth_client, create_sbu
+from nomina.tests.helpers import create_user, create_staff, auth_client, create_sbu
 
 
 class SBUPermisosTests(TestCase):
