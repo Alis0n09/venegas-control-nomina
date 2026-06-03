@@ -2,13 +2,13 @@ from rest_framework import serializers
 from nomina.models import DetalleNomina
 from nomina.serializers.empleado import EmpleadoSummarySerializer
 
-
 class DetalleNominaSummarySerializer(serializers.ModelSerializer):
     empleado = EmpleadoSummarySerializer(read_only=True)
 
     class Meta:
         model  = DetalleNomina
-        fields = ['id', 'empleado', 'dias_laborados', 'total_ingresos', 'valor_a_recibir']
+        fields = ['id', 'empleado', 'nomina', 'dias_laborados', 'total_ingresos', 'valor_a_recibir']
+
 
 class DetalleNominaSerializer(serializers.ModelSerializer):
     empleado_detalle = EmpleadoSummarySerializer(source='empleado', read_only=True)
@@ -24,9 +24,12 @@ class DetalleNominaSerializer(serializers.ModelSerializer):
             'aporte_personal_iess', 'impuesto_renta',
             'total_ingresos', 'valor_a_recibir',
         ]
-        read_only_fields = ['id', 'subtotal_imponible', 'decimo_tercero', 'decimo_cuarto',
-                             'fondos_reserva', 'aporte_personal_iess', 'impuesto_renta', 
-                             'total_ingresos', 'valor_a_recibir']
+        read_only_fields = [
+            'id', 'sueldo_dias_trabajados', 'subtotal_imponible',
+            'decimo_tercero', 'decimo_cuarto', 'fondos_reserva',
+            'aporte_personal_iess', 'impuesto_renta',
+            'total_ingresos', 'valor_a_recibir',
+        ]
 
     def validate_dias_laborados(self, value):
         if value < 0:
@@ -36,12 +39,22 @@ class DetalleNominaSerializer(serializers.ModelSerializer):
         return value
 
     def validate(self, attrs):
-        campos_monetarios = [
-            'horas_extras', 'sueldo_dias_trabajados', 'bonos', 'ingreso_adicional',
-        ]
-
-        for campo in campos_monetarios:
+        for campo in ['horas_extras', 'bonos', 'ingreso_adicional']:
             if campo in attrs and attrs[campo] < 0:
                 raise serializers.ValidationError({campo: 'El valor no puede ser negativo.'})
-
         return attrs
+
+    def create(self, validated_data):
+        from nomina.services import calcular_detalle_nomina
+        detalle = DetalleNomina(**validated_data)
+        detalle = calcular_detalle_nomina(detalle)
+        detalle.save()
+        return detalle
+
+    def update(self, instance, validated_data):
+        from nomina.services import calcular_detalle_nomina
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance = calcular_detalle_nomina(instance)
+        instance.save()
+        return instance

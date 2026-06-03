@@ -1,5 +1,7 @@
+from datetime import date
 from rest_framework import serializers
 from nomina.models import Empleado
+from nomina.models.sbu import SBU
 
 
 class EmpleadoSummarySerializer(serializers.ModelSerializer):
@@ -38,8 +40,13 @@ class EmpleadoSerializer(serializers.ModelSerializer):
         return value
 
     def validate_salario(self, value):
-        if value < 460:
-            raise serializers.ValidationError('El salario no puede ser menor al SBU ($460).')
+        anio = date.today().year
+        sbu = SBU.objects.filter(anio=anio).first()
+        salario_minimo = sbu.valor if sbu else 460
+        if value < salario_minimo:
+            raise serializers.ValidationError(
+                f'El salario no puede ser menor al SBU (${salario_minimo}).'
+            )
         return value
 
     def validate_cargas_familiares(self, value):

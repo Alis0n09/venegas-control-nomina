@@ -5,12 +5,11 @@ from rest_framework.response import Response
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import Count, Avg
-
-from nomina.models                  import Empleado
-from nomina.serializers.empleado    import EmpleadoSerializer, EmpleadoSummarySerializer
-from nomina.permissions             import IsStaffOrReadOnly
-from nomina.pagination              import StandardPagination
-from nomina.filters                 import EmpleadoFilter
+from nomina.models import Empleado
+from nomina.serializers.empleado import EmpleadoSerializer, EmpleadoSummarySerializer
+from nomina.permissions import IsStaffOrReadOnly
+from nomina.pagination import StandardPagination
+from nomina.filters import EmpleadoFilter
 
 
 class EmpleadoViewSet(viewsets.ModelViewSet):
@@ -55,6 +54,27 @@ class EmpleadoViewSet(viewsets.ModelViewSet):
                 status=status.HTTP_400_BAD_REQUEST,
             )
         empleado.estado = False
+        empleado.save(update_fields=['estado'])
+        return Response({
+            'id':     empleado.id,
+            'nombre': str(empleado),
+            'estado': empleado.estado,
+        })
+
+    @action(
+        detail=True,
+        methods=['post'],
+        permission_classes=[IsAdminUser],
+        url_path='reactivar',
+    )
+    def reactivar(self, request, pk=None):
+        empleado = self.get_object()
+        if empleado.estado:
+            return Response(
+                {'error': 'El empleado ya está activo.'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        empleado.estado = True
         empleado.save(update_fields=['estado'])
         return Response({
             'id':     empleado.id,

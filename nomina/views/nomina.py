@@ -4,12 +4,11 @@ from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
-
-from nomina.models               import Nomina
-from nomina.serializers.nomina   import NominaSerializer, NominaSummarySerializer
-from nomina.permissions          import IsStaffOrReadOnly
-from nomina.pagination           import StandardPagination
-from nomina.filters              import NominaFilter
+from nomina.models import Nomina
+from nomina.serializers.nomina import NominaSerializer, NominaSummarySerializer
+from nomina.permissions import IsStaffOrReadOnly
+from nomina.pagination import StandardPagination
+from nomina.filters import NominaFilter
 
 
 class NominaViewSet(viewsets.ModelViewSet):

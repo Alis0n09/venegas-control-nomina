@@ -1,0 +1,101 @@
+[
+  {
+    "model": "nomina.impuestorenta",
+    "pk": 1,
+    "fields": {
+      "anio": 2025,
+      "fraccion_basica": "0.00",
+      "exceso_hasta": "11902.00",
+      "impuesto_fraccion": "0.00",
+      "porcentaje_excedente": "0.00"
+    }
+  },
+  {
+    "model": "nomina.impuestorenta",
+    "pk": 2,
+    "fields": {
+      "anio": 2025,
+      "fraccion_basica": "11902.00",
+      "exceso_hasta": "15159.00",
+      "impuesto_fraccion": "0.00",
+      "porcentaje_excedente": "5.00"
+    }
+  },
+  {
+    "model": "nomina.impuestorenta",
+    "pk": 3,
+    "fields": {
+      "anio": 2025,
+      "fraccion_basica": "15159.00",
+      "exceso_hasta": "19682.00",
+      "impuesto_fraccion": "162.85",
+      "porcentaje_excedente": "10.00"
+    }
+  },
+  {
+    "model": "nomina.impuestorenta",
+    "pk": 4,
+    "fields": {
+      "anio": 2025,
+      "fraccion_basica": "19682.00",
+      "exceso_hasta": "26031.00",
+      "impuesto_fraccion": "615.15",
+      "porcentaje_excedente": "12.00"
+    }
+  },
+  {
+    "model": "nomina.impuestorenta",
+    "pk": 5,
+    "fields": {
+      "anio": 2025,
+      "fraccion_basica": "26031.00",
+      "exceso_hasta": "34255.00",
+      "impuesto_fraccion": "1377.03",
+      "porcentaje_excedente": "15.00"
+    }
+  },
+  {
+    "model": "nomina.impuestorenta",
+    "pk": 6,
+    "fields": {
+      "anio": 2025,
+      "fraccion_basica": "34255.00",
+      "exceso_hasta": "45407.00",
+      "impuesto_fraccion": "2610.63",
+      "porcentaje_excedente": "20.00"
+    }
+  },
+  {
+    "model": "nomina.impuestorenta",
+    "pk": 7,
+    "fields": {
+      "anio": 2025,
+      "fraccion_basica": "45407.00",
+      "exceso_hasta": "60136.00",
+      "impuesto_fraccion": "4841.03",
+      "porcentaje_excedente": "25.00"
+    }
+  },
+  {
+    "model": "nomina.impuestorenta",
+    "pk": 8,
+    "fields": {
+      "anio": 2025,
+      "fraccion_basica": "60136.00",
+      "exceso_hasta": "80181.00",
+      "impuesto_fraccion": "8523.28",
+      "porcentaje_excedente": "30.00"
+    }
+  },
+  {
+    "model": "nomina.impuestorenta",
+    "pk": 9,
+    "fields": {
+      "anio": 2025,
+      "fraccion_basica": "80181.00",
+      "exceso_hasta": null,
+      "impuesto_fraccion": "14536.78",
+      "porcentaje_excedente": "35.00"
+    }
+  }
+]
