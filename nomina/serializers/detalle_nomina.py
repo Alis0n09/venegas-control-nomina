@@ -12,11 +12,16 @@ class DetalleNominaSummarySerializer(serializers.ModelSerializer):
 
 class DetalleNominaSerializer(serializers.ModelSerializer):
     empleado_detalle = EmpleadoSummarySerializer(source='empleado', read_only=True)
+    nomina_display   = serializers.SerializerMethodField()
+
+    def get_nomina_display(self, obj):
+        return f"Nómina {obj.nomina.mes}/{obj.nomina.anio} - {obj.nomina.tipo}"
 
     class Meta:
         model  = DetalleNomina
         fields = [
             'id', 'nomina', 'empleado', 'empleado_detalle',
+            'nomina_display',
             'dias_laborados', 'horas_extras', 'sueldo_dias_trabajados',
             'bonos', 'ingreso_adicional',
             'subtotal_imponible',
